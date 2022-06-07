@@ -3,19 +3,20 @@
 using namespace std;
 
 int RemoveDuplicates(vector<int> &arr) {
-    int n = arr.size(), nondup = 1;
-    for(int i = 1; i<n-1; i++) {
-        if(arr[nondup - 1] != arr[i]) {
-            arr[nondup] = arr[i];
-            nondup++;
+    int n = arr.size(), j = 0;
+    for(int i = 0; i<n-1; i++) {
+        if(arr[i] != arr[i+1]) {
+            arr[j++] = arr[i];
         }
     }
-    return nondup;
+    arr[j++] = arr[n-1];
+    return j;
 }
 
 int main()
 {
     vector<int> arr = {2, 3, 3, 3, 6, 9, 9};
     cout<<RemoveDuplicates(arr);
+
     return 0;
 }
